@@ -1,0 +1,14 @@
+<div class="card transfer-wiget">
+  <div class="card-header" [ngStyle]="setMyStyles()">
+    <i [class]="iconPath" aria-hidden="true"></i>
+    <div class="child">
+      <!-- <img [src]="iconPath" [alt]="cardName" height="25" /> -->
+      <span class="card-name">{{ cardName }}</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <ng-content select="[card-content]"></ng-content>
+    </div>
+  </div>
+</div>

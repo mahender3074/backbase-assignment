@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{'paymentDetails' | translate | async}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('dismiss')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <ul>
+    <li>
+      Are you ready to send out this transfer?
+    </li>
+    <li><b>It will be send to account :</b></li>
+    <li>{{ payment.merchant.name }}</li>
+    <li><b>With the amount of :</b></li>
+    <li>
+      &#8364; &nbsp;{{
+      payment.transaction.amountCurrency.amount.toFixed(2)
+      }}
+    </li>
+  </ul>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-close" (click)="onClose()">Close
+  </button>
+  <button type="button" class="btn btn-outline-dark" (click)="onTransfer()">
+    {{ 'transfer' | translate | async }}
+  </button>
+</div>

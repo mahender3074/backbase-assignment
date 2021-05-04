@@ -1,0 +1,21 @@
+<div class="lists">
+  <div class="row list-wrap" *ngFor="let item of transactions">
+    <div class="col col-sm-1 col-md-2 child" style="font-weight: 300" [ngStyle]="{
+        'border-left': '8px solid ' + item.categoryCode
+      }">
+      {{ item.dates.valueDate | date: 'MMM. d' }}
+    </div>
+    <div class="col col-sm-3 col-md-6 child">
+      <span>
+        <strong>{{ item.merchant.name }}</strong> <br class="display-none-sm" />
+        <span style="font-weight: 300" class="display-none-sm">{{ item.transaction.type }}</span>
+      </span>
+    </div>
+    <div class="col col-sm-2 child" style="justify-content: flex-end;">
+      <strong style="font-size: 1.2rem;color: rgb(42, 230, 42);" *ngIf="item.transaction.creditDebitIndicator=='CRDT'">&#8364;  &nbsp;{{
+        item.transaction.amountCurrency.amount }}</strong>
+        <strong style="font-size: 1.2rem;color: rgb(245, 45, 45);" *ngIf="item.transaction.creditDebitIndicator=='DBIT'">&#8364;  &nbsp;{{
+          item.transaction.amountCurrency.amount }}</strong>
+    </div>
+  </div>
+</div>

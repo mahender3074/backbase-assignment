@@ -1,0 +1,28 @@
+@import '../../../../assets/scss/variables.scss';
+.modal-header {
+  background:#f8f9fa;
+  h4,
+  .close {
+    color:black;
+    text-decoration: unset;
+  }
+}
+.modal-footer {
+  .btn {
+    background: $accent;
+    border: unset;
+   // padding: .5rem 4.25rem;
+    color: $white;
+  }
+  .btn-close{
+    background: white;
+    border: 1px solid black;
+    color: black;
+  }
+}
+ul{
+  list-style: none;
+}
+ul li{
+  padding:8px
+}

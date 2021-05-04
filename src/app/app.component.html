@@ -1,0 +1,28 @@
+<header>
+  <app-logo></app-logo>
+</header>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col col-sm-12 col-md-4 makeTransfer">
+        <app-card title="makeTransfer" icon="fa fa-folder-open-o">
+          <app-form-generator card-content [formObject]="formInputsObject" [formErrors]="formErrors"
+            [retreiveInfo]="retreiveTransfer.asObservable()" [showSubmitBtn]="true" [formModel]="formModel"
+            (onSaveEvent)="onSubmit($event)"></app-form-generator>
+        </app-card>
+      </div>
+      <div class="col col-sm-12 col-md-8">
+        <app-card title="transactionsHistory" icon="fa fa-list">
+          <div card-content>
+            <app-form-generator [formObject]="filterInputsObject" [showSubmitBtn]="false" [formModel]="filterModel"
+              (onSaveEvent)="onFilter($event)"></app-form-generator>
+            <app-list-transactions [transactions]="normalizedTransactions"></app-list-transactions>
+          </div>
+        </app-card>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <app-footer></app-footer>
+</footer>

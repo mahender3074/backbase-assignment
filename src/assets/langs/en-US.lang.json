@@ -1,0 +1,19 @@
+{
+  "makeTransfer": "Make Transfer",
+  "transactionsHistory": "Transactions List",
+  "toAccount": "To Account",
+  "fromAccount": "From Account",
+  "amount": "Amount",
+  "submit": "Submit",
+  "balanceStatus": "Balance limit is 500, available:",
+  "sortBy": "Sort by",
+  "date": "DATE",
+  "beneficiary": "BENEFICIARY",
+  "searchBy": " filter transactions",
+  "paymentDetails": "Review Transfer",
+  "company": "COMPANY",
+  "type": "TYPE",
+  "transfer": "SEND TRANSFER",
+  "english": "Engleza",
+  "romanian": "Romana"
+}

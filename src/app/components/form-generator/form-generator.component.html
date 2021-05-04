@@ -1,0 +1,69 @@
+<form [formGroup]="formGroup" class="form-generator">
+  <div class="row">
+    <ng-container *ngFor="let formElement of formObject; let elementIndex = index">
+      <div class="col-sm-12 form-group input-group mb-3" *ngIf="formElement.type == 'input'"
+        [ngClass]="displayFieldCss(formGroup, formElement.key, elementIndex)">
+        <label [for]="formElement.key">{{
+          formElement.label | translate | async
+          }}</label>
+
+        <div *ngIf="formElement.key == 'amount'" class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-eur"></i></span>
+          </div>
+          <input type="number" min="0" class="form-control" [id]="formElement.key" [name]="formElement.type"
+            (ngModelChange)="inputValidationRegister($event, formElement.key)" [placeholder]="formElement.placeholder"
+            [(ngModel)]="formModel[formElement.key]" [formControlName]="formElement.key"
+            [readOnly]="formElement.disabled" />
+        </div>
+        <div *ngIf="formElement.key == 'toAccount'" class="input-group mb-3">
+          <input type="text" class="form-control" [id]="formElement.key" [name]="formElement.type"
+            (ngModelChange)="inputValidationRegister($event, formElement.key)" [placeholder]="formElement.placeholder"
+            [(ngModel)]="formModel[formElement.key]" [formControlName]="formElement.key"
+            [readOnly]="formElement.disabled" />
+        </div>
+      </div>
+      <div class="col-sm-12 form-group" *ngIf="formElement.type == 'select'"
+        [ngClass]="displayFieldCss(formGroup, formElement.key, elementIndex)">
+        <label [for]="formElement.key">{{
+          formElement.label | translate | async
+          }}</label>
+        <select class="form-control" [id]="formElement.key" [attr.disabled]="formElement.disabled ? 'disabled' : null"
+          [formControlName]="formElement.key" [(ngModel)]="formModel[formElement.key]"
+          (ngModelChange)="selectValidationRegister($event, formElement.key)">
+          <option *ngFor="let item of formElement.options" [ngValue]="item">
+            {{ item.merchant.name }}
+            <span *ngIf="formElement.key === 'fromAccount'">- &#8364;  &nbsp;{{ balance.toFixed(2) }}</span>
+          </option>
+        </select>
+      </div>
+      <div class="col-sm-12 col-md-5" *ngIf="formElement.type == 'searchable'">
+        <div class="form-group form-group-extended" style="margin-top: -10px">
+         <div class="search-filter"> <span class="input-group-text"><i class="fa fa-search"></i></span></div>
+          <input
+            type="text"
+            class="form-control"
+            [name]="formElement.type"
+            placeholder="{{ formElement.placeholder | translate | async }}"
+            [(ngModel)]="formModel[formElement.key]"
+            [formControlName]="formElement.key"
+            [readOnly]="formElement.disabled"
+            (input)="onSubmit()"
+          />
+          <span (click)="onClearInput(formElement.key)" *ngIf="formModel[formElement.key]" class="material-icons search-clear">
+            Clear
+          </span>
+        </div>
+      </div>
+    </ng-container>
+    <span *ngIf="overdraft" style="color: #ec7030">
+      
+     Transaction not allowed as overdraft limit is &#8364;500
+    </span>
+  </div>
+  <div *ngIf="showSubmitBtn" class="card-footer text-right submit">
+    <button type="submit" class="btn btn-info greenButton" (click)="onSubmit()">
+      {{ 'submit' | translate | async }}
+    </button>
+  </div>
+</form>

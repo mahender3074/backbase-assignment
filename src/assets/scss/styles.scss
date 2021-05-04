@@ -1,0 +1,44 @@
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  margin: 0;
+  padding-bottom: 20px;
+  background-color: unset;
+  font-family: 'Kanit', sans-serif;
+  //overflow: hidden;
+}
+main{
+  background-image: url("../imgs/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 695px;
+}
+@media screen and (max-width: 600px) {
+  .nav .dropdown-menu.show {
+    display: block;
+    left: -140px !important;
+  }
+  .card {
+    margin-top: 50px;
+  }
+  main {
+    margin-top: 0 !important;
+  }
+  .sortBy {
+    display: none;
+  }
+  .buttons {
+    width: 100%;
+    padding-left: 45px;
+  }
+  .display-none-sm {
+    display: none !important;
+  }
+  .lists .child {
+    height: 100px !important;
+  }
+}
+.container, .container-fluid, .container-xl, .container-lg, .container-md, .container-sm{
+  max-height: 520px;
+}
